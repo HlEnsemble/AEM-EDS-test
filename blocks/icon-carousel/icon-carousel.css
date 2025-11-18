@@ -1,0 +1,59 @@
+.icon-carousel {
+  padding: 20px 0;
+  background-color: #f5f5f5; /* Light gray background often used */
+}
+
+.icon-carousel-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 24px;
+  padding: 0 24px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* Center items if they don't overflow */
+  justify-content: flex-start; 
+}
+
+/* Hide scrollbar */
+.icon-carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.icon-item {
+  flex: 0 0 auto;
+  width: 100px; /* Adjust based on design */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  scroll-snap-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.icon-item:hover {
+  transform: scale(1.05);
+}
+
+.icon-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  border-radius: 50%; /* Circular icons if appropriate, or just standard */
+}
+
+.icon-item p {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+@media (min-width: 900px) {
+  .icon-carousel-container {
+    justify-content: center; /* Center on desktop if not too many items */
+  }
+}
+

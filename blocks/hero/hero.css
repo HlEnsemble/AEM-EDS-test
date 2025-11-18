@@ -1,47 +1,101 @@
-.hero-container .hero-wrapper {
-  max-width: unset;
-  padding: 0;
-}
-
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  width: 100%;
+  overflow: hidden;
 }
 
-.hero h1,
-.hero h2,
-.hero h3,
-.hero h4,
-.hero h5,
-.hero h6,
-.hero p {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+.hero-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
-.hero.no-image * {
-  color: var(--text-color);
+.hero-slider::-webkit-scrollbar {
+  display: none;
 }
 
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+.hero-slide {
+  flex: 0 0 100%;
+  position: relative;
+  min-height: 400px; /* Minimum height for the hero */
+  scroll-snap-align: start;
 }
 
-.hero img {
-  object-fit: cover;
+.hero-image {
   width: 100%;
   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 
-@media (width >= 900px) {
-  .hero {
-    padding: 40px 32px;
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  width: 90%;
+  max-width: 800px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content h1, 
+.hero-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-content a.button {
+  display: inline-block;
+  padding: 12px 32px;
+  background-color: #cc0000; /* Coleman Red approximately */
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  text-shadow: none;
+}
+
+.hero-content a.button:hover {
+  background-color: #990000;
+}
+
+/* Left aligned banner variant from HTML example */
+.hero.left-aligned .hero-content {
+  left: 5%;
+  transform: translateY(-50%);
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .hero-content h1, 
+  .hero-content h2 {
+    font-size: 1.75rem;
+  }
+  
+  .hero-slide {
+    min-height: 300px;
   }
 }
